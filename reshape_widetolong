@@ -1,0 +1,17 @@
+#use reshape for transposing two vars from wide to long;
+  #the two vars are vara and varb;
+  #the 5 groups (or "times") are g1 to g5;
+
+install.packages("reshape")
+library(reshape)
+
+data_long <- reshape(data_wide, direction='long', 
+                      varying=c('g1.vara', 'g1.varb', 
+                                'g2.vara', 'g2.varb', 
+                                'g3.vara', 'g3.varb', 
+                                'g4.vara', 'g4.varb', 
+                                'g5.vara', 'g5.varb'), 
+                      timevar='group',
+                      times=c('g1', 'g2', 'g3', 'g4', 'g5'),
+                      v.names=c('vara', 'varb'),
+                      idvar='rowid')

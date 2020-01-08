@@ -1,0 +1,8 @@
+#set working directory;
+#note that the slashes are forward slashes;
+
+setwd("C:/Users/stati/OneDrive/Documents")
+
+
+#read data from csv file;
+data <- read.csv("datainput.csv", header= TRUE)

@@ -1,0 +1,22 @@
+##Use metafor library;
+  ## use log effect size;
+  ## effect size id as level 2;
+  ## study id as level 3;
+  
+  
+library(metafor)
+
+three_metafor <- rma.mv(yi = log_aES, 
+                    V = log_aSE,                  # sampling variances
+                    random = list(~ 1 | es_id,     # indicate level 2
+                                  ~ 1 | study_id), # indicate level 3
+                    tdist = TRUE,                  # Knapp-Hartung adjustment
+                    data = currentDataset,
+                    method = "REML",
+                    slab = study_name)
+
+three_metafor
+
+
+
+  ## Ref: Constantin Yves Plessen (2020) https://constantinyvesplessen.com/post/multilevel_primer/#how-to-3-level-meta-analyses-with-metafor
